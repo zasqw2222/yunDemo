@@ -6,6 +6,9 @@ import Headers from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Contend from './components/Content/Content';
 
+import './css/antd.min.css'
+
+
 export default class App extends React.Component{
     render(){
         return (

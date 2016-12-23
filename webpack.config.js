@@ -43,7 +43,10 @@ module.exports = {
             }, {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=1000&name=/images/[name].[ext]'
-            },
+            },{
+                test: /\.css$/,
+                loaders: ["style-loader", "css-loader?sourceMap","postcss-loader"]
+            }
         ]
     },
     postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
