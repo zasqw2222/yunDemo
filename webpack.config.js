@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlPlugin = require('html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+
 
 const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -24,7 +26,7 @@ module.exports = {
         inline: true,
         progress: true,
         contentBase: SRC_PATH
-        
+
     },
     module: {
         loaders: [
@@ -32,24 +34,18 @@ module.exports = {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
                 loaders: ['babel-loader']
-            },
-            {
+            }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
-            },
-            {
+                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap","postcss-loader"]
+            }, {
                 test: /\.json$/,
                 loaders: ['json-loader']
-            }
+            }, {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader?limit=1000&name=/images/[name].[ext]'
+            },
         ]
     },
-    plugins: [
-        new htmlPlugin(
-            {
-                title: 'app', 
-                inject: 'body', 
-                template: './tpl/tpl.html'
-            }
-        )
-    ]
+    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
+    plugins: [new htmlPlugin({title: 'app', inject: 'body', template: './tpl/tpl.html'})]
 };
