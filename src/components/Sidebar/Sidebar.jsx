@@ -1,6 +1,9 @@
 import React from 'react';
 import './index.scss'
 
+
+import { Link } from 'react-router'
+
 import {Menu, Icon} from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -21,7 +24,6 @@ export default class HeaderCom extends React.Component {
         return (
             <div className="sidebar">
                 <Menu
-                    onClick={this.handleClick}
                     style={{
                     width: 240
                 }}
@@ -30,8 +32,9 @@ export default class HeaderCom extends React.Component {
                     mode="inline">
                     <SubMenu key="sub1" title={<span><span>列表</span></span>}>
           <MenuItemGroup title="大項">
-            <Menu.Item key="1">選項1</Menu.Item>
-            <Menu.Item key="2">選項2</Menu.Item>
+          
+            <Menu.Item key="1"><Link to="/m1">M1</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/m2">M2</Link></Menu.Item>
           </MenuItemGroup>
           <MenuItemGroup title="大項">
             <Menu.Item key="3">選項3</Menu.Item>

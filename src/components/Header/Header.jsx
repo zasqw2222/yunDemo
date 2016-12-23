@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss'
 
 import {Menu, Icon} from 'antd';
-
+import {Link} from 'react-router'
 export default class HeaderCom extends React.Component {
     constructor(props) {
         super(props)
@@ -25,9 +25,9 @@ export default class HeaderCom extends React.Component {
                         selectedKeys={[this.state.current]}
                         mode="horizontal">
                         <Menu.Item key="mail">
-                            <Icon type="mail"/>第一
+                            <Link to="/">第一</Link>
                         </Menu.Item>
-                        <Menu.Item key="app" disabled>
+                        <Menu.Item key="app">
                             <Icon type="appstore"/>第二
                         </Menu.Item>
                         <Menu.Item key="alipay">

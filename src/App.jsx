@@ -1,24 +1,26 @@
 /**
  * App组件
- * */ 
+ * */
 import React from 'react';
 import Headers from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import Contend from './components/Content/Content';
+// import Contend from './components/Content/Content';
 
 import './css/antd.min.css'
 
-
-export default class App extends React.Component{
-    render(){
+export default class App extends React.Component {
+    render() {
         return (
             <div>
-                <Headers />
+                <Headers/>
                 <div>
-                    <Sidebar />
-                    <Contend />
+                    <Sidebar/>
+                    <div className="content">
+                        {this.props.children}
+                    </div>
+
                 </div>
-                
+
             </div>
         )
     }

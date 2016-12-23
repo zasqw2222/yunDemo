@@ -42,7 +42,7 @@ module.exports = {
                 loaders: ['json-loader']
             }, {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=1000&name=/images/[name].[ext]'
+                loader: 'url-loader?limit=8192&name=/images/[name].[ext]'
             },{
                 test: /\.css$/,
                 loaders: ["style-loader", "css-loader?sourceMap","postcss-loader"]
