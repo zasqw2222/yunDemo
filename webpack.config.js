@@ -15,7 +15,8 @@ module.exports = {
     },
     output: {
         path: DIST_PATH,
-        filename: 'js/index.js'
+        filename: 'js/index.js',
+        chunkFilename: '[name].[chunkhash:5].chunk.js'
     },
     resolve: { // resolve 指定可以被 import 的文件后缀
         extensions: ['', '.js', '.jsx']

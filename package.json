@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --hot",
     "build": "webpack",
     "rm": "rm -rf ./dist",
-    "ser": "rm -rf ./dist && webpack && node ./server.js"
+    "ser": "npm run rm && webpack && node ./server.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "babel-preset-react": "^6.16.0",
     "express": "^4.14.0",
     "json-loader": "^0.5.4",
+    "opn": "^4.0.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-router": "^3.0.0"

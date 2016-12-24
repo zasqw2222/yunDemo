@@ -33,8 +33,8 @@ export default class HeaderCom extends React.Component {
                     <SubMenu key="sub1" title={<span><span>列表</span></span>}>
           <MenuItemGroup title="大項">
           
-            <Menu.Item key="1"><Link to="/m1">M1</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/m2">M2</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="m1">M1</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="m2">M2</Link></Menu.Item>
           </MenuItemGroup>
           <MenuItemGroup title="大項">
             <Menu.Item key="3">選項3</Menu.Item>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss'
 
-export default class M1 extends React.Component{
+class M2 extends React.Component{
     render(){
         return (
             <div className="M2">
@@ -10,3 +10,4 @@ export default class M1 extends React.Component{
         )
     }
 }
+module.exports = M2
