@@ -23,7 +23,7 @@ let extractCSS = new ExtractTextPlugin('css/[name].[contenthash].min.css');
 module.exports = {
     entry: {
         app: [path.resolve(SRC_PATH, 'index.js')],
-        vendor: ['react', 'react-dom','react-router','antd']
+        vendor: ['react', 'react-dom', 'react-router', 'antd']
     },
     output: {
         path: DIST_PATH,
@@ -49,19 +49,23 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader?sourceMap&importLoaders=1!postcss-loader?parser=postcss-scss", "sass-loader"],
+                loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],
             },
             {
                 test: /\.css$/,
-                loader: extractCSS.extract("style-loader", "css-loader?sourceMa", "postcss-loader")
+                loader: extractCSS.extract("style-loader", "css-loader?sourceMap", "postcss-loader")
             },
             {
                 test: /\.json$/,
                 loader: 'json-loader'
             },
             {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=8192&name=images/[name].[ext]'
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 8192,
+                    name: 'images/[name].[hash:7].[ext]'
+                }
             }
         ]
     },

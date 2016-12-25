@@ -5,7 +5,7 @@ const opn = require('opn');
 
 const config = require('../webpack.config.dev');
 const port = process.env.PORT || 8080;
-config.entry.app.unshift(`webpack-dev-server/client?http://localhost:${port}/`,'webpack/hot/dev-server');
+config.entry.app.unshift(`webpack-dev-server/client?http://localhost:${port}/`,'webpack/hot/only-dev-server');
 
 
 

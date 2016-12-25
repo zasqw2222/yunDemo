@@ -6,6 +6,7 @@ export default class Home extends React.Component{
         return (
             <div className="home">
                 HOME
+                <img src={require("../../images/hines121200035.jpg")} alt=""/>
             </div>
         )
     }

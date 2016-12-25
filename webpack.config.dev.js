@@ -21,25 +21,36 @@ module.exports = {
     resolve: { // resolve 指定可以被 import 的文件后缀
         extensions: ['', '.js', '.jsx']
     },
-    
+
     module: {
         loaders: [
             {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
-                loaders: ['babel-loader']
+                loaders: ["react-hot-loader", "babel-loader"]
             }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap", "postcss-loader"]
-            }, {
-                test: /\.json$/,
-                loaders: ['json-loader']
-            }, {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=8192&name=/images/[name].[ext]'
-            }, {
+                loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],
+            },
+            {
                 test: /\.css$/,
                 loaders: ["style-loader", "css-loader?sourceMap", "postcss-loader"]
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }, {
+                test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+                exclude: /^node_modules$/,
+                loader: 'file-loader?name=[name].[ext]'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 8192,
+                    name: 'images/[name].[ext]'
+                }
             }
         ]
     },
