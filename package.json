@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot",
-    "build": "webpack",
+    "dev": "node ./servers/server.dev.js",
+    "build": "npm run rm && webpack --config ./webpack.config.prod.js",
     "rm": "rm -rf ./dist",
-    "ser": "npm run rm && webpack && node ./server.js"
+    "ser": "npm run build && node ./servers/server.build.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +23,8 @@
     "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.1.1",
     "postcss-loader": "^1.2.1",
+    "postcss-scss": "^0.4.0",
+    "postcss-strip-inline-comments": "^0.1.5",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

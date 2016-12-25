@@ -11,7 +11,7 @@ const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        app: path.resolve(SRC_PATH, 'index.js')
+        app: [path.resolve(SRC_PATH, 'index.js')]
     },
     output: {
         path: DIST_PATH,
@@ -21,14 +21,7 @@ module.exports = {
     resolve: { // resolve 指定可以被 import 的文件后缀
         extensions: ['', '.js', '.jsx']
     },
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
-        contentBase: SRC_PATH
-
-    },
+    
     module: {
         loaders: [
             {
@@ -37,19 +30,19 @@ module.exports = {
                 loaders: ['babel-loader']
             }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap","postcss-loader"]
+                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap", "postcss-loader"]
             }, {
                 test: /\.json$/,
                 loaders: ['json-loader']
             }, {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=8192&name=/images/[name].[ext]'
-            },{
+            }, {
                 test: /\.css$/,
-                loaders: ["style-loader", "css-loader?sourceMap","postcss-loader"]
+                loaders: ["style-loader", "css-loader?sourceMap", "postcss-loader"]
             }
         ]
     },
-    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
-    plugins: [new htmlPlugin({title: 'app', inject: 'body', template: './tpl/tpl.html'})]
+    postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
+    plugins: [new htmlPlugin({ title: 'app', inject: 'body', template: './tpl/tpl.html' }), new webpack.HotModuleReplacementPlugin()]
 };

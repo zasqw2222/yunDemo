@@ -1,3 +1,6 @@
+/**
+ * 总路由
+ */
 const rootRouters = [{
   path: '/',
   component: require('../App').default,

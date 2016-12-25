@@ -12,10 +12,10 @@ const port = process.env.PORT || 3000;
 let app = express();
 
 // 设定静态目录
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(path.resolve(__dirname , '../dist')));
 // 路由归属
 app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+  response.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
 })
 
 
