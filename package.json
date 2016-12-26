@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./servers/server.dev.js",
-    "build": "NODE_ENV=production && npm run rm && webpack --config ./webpack.config.prod.js --projress",
+    "build": "NODE_ENV=production && npm run rm && webpack --config ./webpack.config.prod.js --progress --colors",
     "rm": "rm -rf ./dist",
     "ser": "npm run build && node ./servers/server.build.js"
   },

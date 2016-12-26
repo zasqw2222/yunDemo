@@ -88,7 +88,7 @@ module.exports = {
                 minChunkSize: 51200, // ~50kb
             }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin({name: "vendor"}),
+        new webpack.optimize.CommonsChunkPlugin({names: ["vendor","common"]}),
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("production")
