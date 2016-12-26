@@ -20,7 +20,7 @@ const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 let config = require('./config/config.base');
 
 let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
-let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}[contenthash].min.css`);
+// let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}[contenthash].min.css`);
 
 module.exports = {
     entry: {
@@ -52,7 +52,7 @@ module.exports = {
                 loader: 'babel-loader'
             }, {
                 test: /\.scss$/,
-                loader: extractSCSS.extract("style-loader", "css-loader", "sass-loader")
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             }, {
                 test: /\.css$/,
                 loader: extractCSS.extract("style-loader", "css-loader?sourceMap", "postcss-loader")
