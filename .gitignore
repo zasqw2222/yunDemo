@@ -1,3 +1,4 @@
-#不上传目录
+# 不上传目录
 node_modules
 dist
+doc

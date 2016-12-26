@@ -1,3 +1,6 @@
+/**
+ * 生产配置文件
+ */
 'use strict'
 const path = require('path');
 const webpack = require('webpack');
@@ -13,12 +16,11 @@ const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
+// 配置信息
+let config = require('./config/config.base');
 
-let extractCSS = new ExtractTextPlugin('css/[name].[contenthash].min.css');
-// let extractSCSS = new ExtractTextPlugin('css/[name].[contenthash].min.css', {
-//     allChunks: true
-// });
-
+let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
+let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}[contenthash].min.css`);
 
 module.exports = {
     entry: {
@@ -27,18 +29,20 @@ module.exports = {
     },
     output: {
         path: DIST_PATH,
-        filename: 'js/[name].[chunkhash:5].js',
-        chunkFilename: '[name].[chunkhash:5].chunk.js',
-        // publicPath: '/'
+        filename: `js/[name].${config.ver}.[chunkhash:5].js`,
+        chunkFilename: `js/[name].${config.ver}.[chunkhash:5].js`,
+        publicPath: '/'
     },
-    resolve: { // resolve 指定可以被 import 的文件后缀
-        extensions: ['', '.js', '.jsx'],
+    resolve: { 
+        extensions: [
+            '', '.js', '.jsx'
+        ],
         alias: {
-            'publicComponents': path.resolve(__dirname, './src/components')//公共组件路径
+            'publicComponents': path.resolve(__dirname, './src/components') //公共组件路径
         }
     },
     resolveLoader: {
-        modulesDirectories: ['node_modules'],
+        modulesDirectories: ['node_modules']
     },
     module: {
         loaders: [
@@ -46,51 +50,49 @@ module.exports = {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
-            },
-            {
+            }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],
-            },
-            {
+                loader: extractSCSS.extract("style-loader", "css-loader", "sass-loader")
+            }, {
                 test: /\.css$/,
                 loader: extractCSS.extract("style-loader", "css-loader?sourceMap", "postcss-loader")
-            },
-            {
+            }, {
                 test: /\.json$/,
                 loader: 'json-loader'
-            },
-            {
+            }, {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url',
                 query: {
                     limit: 8192,
-                    name: 'images/[name].[hash:7].[ext]'
+                    name: `images/[name].${config.ver}.[hash:7].[ext]`
                 }
             }
         ]
     },
     postcss: function (webpack) {
-        return [
-            autoprefixer,
-            stripInlineComments
-        ];
+        return [autoprefixer, stripInlineComments];
     },
     plugins: [
-        new htmlPlugin({
-            title: 'app',
-            inject: 'body',
-            template: './tpl/tpl.html'
-        }),
+        new htmlPlugin({title: 'app', inject: 'body', template: './tpl/tpl.html'}),
         extractCSS,
         new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+                output: {
+                    comments: false, // 移除注释
+                },
+                compress: {
+                    warnings: false
+                }
+            }),
         new webpack.NoErrorsPlugin(),
+        new webpack.optimize.MinChunkSizePlugin({
+                minChunkSize: 51200, // ~50kb
+            }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor"
+        new webpack.optimize.CommonsChunkPlugin({name: "vendor"}),
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
         })
     ]
 

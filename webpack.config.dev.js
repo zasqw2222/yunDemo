@@ -1,9 +1,13 @@
+/**
+ * 开发配置文件
+ */
+'use strict'
 const path = require('path');
 const webpack = require('webpack');
 const htmlPlugin = require('html-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const autoprefixer = require('autoprefixer');
 
-
+// 路径
 const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
