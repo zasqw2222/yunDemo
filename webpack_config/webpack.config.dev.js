@@ -9,8 +9,8 @@ const autoprefixer = require('autoprefixer');
 
 // 路径
 const ROOT_PATH = path.resolve(__dirname);
-const SRC_PATH = path.resolve(ROOT_PATH, 'src');
-const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+const SRC_PATH = path.resolve(ROOT_PATH, '../src');
+const DIST_PATH = path.resolve(ROOT_PATH, '../dist');
 
 module.exports = {
     devtool: 'source-map',
@@ -31,7 +31,7 @@ module.exports = {
             {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
-                loaders: ["react-hot-loader", "babel-loader"]
+                loader: "babel-loader"
             }, {
                 test: /\.scss$/,
                 loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],
@@ -59,5 +59,5 @@ module.exports = {
         ]
     },
     postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
-    plugins: [new htmlPlugin({ title: 'app', inject: 'body', template: './tpl/tpl.html' }), new webpack.HotModuleReplacementPlugin()]
+    plugins: [new htmlPlugin({ title: 'app', inject: 'body', template: './src/tpl.html' }), new webpack.HotModuleReplacementPlugin()]
 };

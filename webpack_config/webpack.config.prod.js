@@ -13,11 +13,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // 路徑
 const ROOT_PATH = path.resolve(__dirname);
-const SRC_PATH = path.resolve(ROOT_PATH, 'src');
-const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+const SRC_PATH = path.resolve(ROOT_PATH, '../src');
+const DIST_PATH = path.resolve(ROOT_PATH, '../dist');
 
 // 配置信息
-let config = require('./config/config.base');
+let config = require('../config/config.base');
 
 let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
 // let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}[contenthash].min.css`);
@@ -73,7 +73,7 @@ module.exports = {
         return [autoprefixer, stripInlineComments];
     },
     plugins: [
-        new htmlPlugin({title: 'app', inject: 'body', template: './tpl/tpl.html'}),
+        new htmlPlugin({title: 'app', inject: 'body', template: './src/tpl.html'}),
         extractCSS,
         new webpack.optimize.UglifyJsPlugin({
                 output: {
