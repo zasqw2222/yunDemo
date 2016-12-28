@@ -22,8 +22,8 @@ module.exports = {
         filename: 'js/index.js',
         chunkFilename: '[name].[chunkhash:5].chunk.js'
     },
-    resolve: { // resolve 指定可以被 import 的文件后缀
-        extensions: ['', '.js', '.jsx']
+    resolve: { 
+        extensions: ['', '.js', '.jsx', 'scss']
     },
 
     module: {
@@ -31,7 +31,7 @@ module.exports = {
             {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loaders: ["react-hot", "babel-loader"]
             }, {
                 test: /\.scss$/,
                 loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],

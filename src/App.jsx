@@ -1,15 +1,12 @@
 /**
- * App组件
+ * App组件 负责总入口
  * */
 import React from 'react';
 import Headers from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 
-
 export default class App extends React.Component {
-
     render() {
-        console.log(this.props)
         return (
             <div>
                 <Headers/>
@@ -18,9 +15,7 @@ export default class App extends React.Component {
                     <div className="content">
                         {this.props.children}
                     </div>
-
                 </div>
-
             </div>
         )
     }
