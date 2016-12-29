@@ -8,7 +8,6 @@ const htmlPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 // css相关
-const stripInlineComments = require('postcss-strip-inline-comments');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // 路徑
@@ -20,7 +19,6 @@ const DIST_PATH = path.resolve(ROOT_PATH, '../dist');
 let config = require('../config/config.base');
 
 let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
-// let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}[contenthash].min.css`);
 
 module.exports = {
     entry: {
@@ -52,10 +50,10 @@ module.exports = {
                 loader: 'babel-loader'
             }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+                loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
             }, {
                 test: /\.css$/,
-                loader: extractCSS.extract("style-loader", "css-loader?sourceMap", "postcss-loader")
+                loader: extractCSS.extract("style-loader", "css-loader")
             }, {
                 test: /\.json$/,
                 loader: 'json-loader'
@@ -68,9 +66,6 @@ module.exports = {
                 }
             }
         ]
-    },
-    postcss: function (webpack) {
-        return [autoprefixer, stripInlineComments];
     },
     plugins: [
         new htmlPlugin({title: 'app', inject: 'body', template: './src/tpl.html'}),

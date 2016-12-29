@@ -2,9 +2,12 @@
  * 开发配置文件
  */
 'use strict'
+// 路径
 const path = require('path');
 const webpack = require('webpack');
+// html
 const htmlPlugin = require('html-webpack-plugin');
+// 前缀
 const autoprefixer = require('autoprefixer');
 
 // 路径
