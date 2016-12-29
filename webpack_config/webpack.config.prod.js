@@ -9,7 +9,7 @@ const autoprefixer = require('autoprefixer');
 
 // css相关
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const stripInlineComments = require('postcss-strip-inline-comments');
 // 路徑
 const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.resolve(ROOT_PATH, '../src');
@@ -19,6 +19,7 @@ const DIST_PATH = path.resolve(ROOT_PATH, '../dist');
 let config = require('../config/config.base');
 
 let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
+// let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}.min.css`);
 
 module.exports = {
     entry: {
@@ -31,7 +32,7 @@ module.exports = {
         chunkFilename: `js/[name].${config.ver}.[chunkhash:5].js`,
         publicPath: '/'
     },
-    resolve: { 
+    resolve: {
         extensions: [
             '', '.js', '.jsx'
         ],
@@ -49,11 +50,8 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             }, {
-                test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
-            }, {
-                test: /\.css$/,
-                loader: extractCSS.extract("style-loader", "css-loader")
+                test: /\.s?css$/,
+                loader: extractCSS.extract('style-loader', 'css-loader?sourceMap&importLoaders=1!postcss-loader?parser=postcss-scss')
             }, {
                 test: /\.json$/,
                 loader: 'json-loader'
@@ -67,10 +65,16 @@ module.exports = {
             }
         ]
     },
+    postcss: function (webpack) {
+        return [stripInlineComments,autoprefixer];
+    },
     plugins: [
         new htmlPlugin({title: 'app', inject: 'body', template: './src/tpl.html'}),
         extractCSS,
-        new webpack.optimize.UglifyJsPlugin({
+        // extractSCSS,
+        new webpack
+            .optimize
+            .UglifyJsPlugin({
                 output: {
                     comments: false, // 移除注释
                 },
@@ -79,11 +83,19 @@ module.exports = {
                 }
             }),
         new webpack.NoErrorsPlugin(),
-        new webpack.optimize.MinChunkSizePlugin({
+        new webpack
+            .optimize
+            .MinChunkSizePlugin({
                 minChunkSize: 51200, // ~50kb
             }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin({names: ["vendor","common"]}),
+        new webpack
+            .optimize
+            .DedupePlugin(),
+        new webpack
+            .optimize
+            .CommonsChunkPlugin({
+                names: ["vendor", "common"]
+            }),
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("production")

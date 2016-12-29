@@ -11,7 +11,7 @@ import {render} from 'react-dom';
 
 import {Router, browserHistory} from 'react-router'
 import '../lib/antd/antd.min.css'
-
+import './theme/reset.scss'
 import rootRouters from './routes'
 
 render((<Router history={browserHistory} routes={rootRouters}/>), document.getElementById('app'))
