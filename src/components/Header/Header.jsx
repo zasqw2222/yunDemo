@@ -11,20 +11,22 @@ export default class HeaderCom extends React.Component {
         }
     }
     handleClick(e) {
+        if('home' == e.key){
+            this.props.nChangeTabname('HOME')
+        }
         this.setState({current: e.key});
     }
     render() {
+        console.log(this.porps)
         return (
             <div className="headers">
                 <div className="con">
                     <Menu
-                        onClick={this
-                        .handleClick
-                        .bind(this)}
+                        onClick={this.handleClick.bind(this)}
                         selectedKeys={[this.state.current]}
                         mode="horizontal">
-                        <Menu.Item key="mail">
-                            <Link to="/">第一</Link>
+                        <Menu.Item key="home">
+                            <Link to="/">{this.props.name || 'HOME'}</Link>
                         </Menu.Item>
                         <Menu.Item key="app">
                             <Icon type="appstore"/>第二

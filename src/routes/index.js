@@ -3,11 +3,11 @@
  */
 const rootRouters = [{
   path: '/',
-  component: require('../App.jsx').default,
+  component: require('../App').default,
   indexRoute: {
     getComponents(location, callback) {
       require.ensure([], function (require) {
-        callback(null, require('../components/Home/index.jsx').default)
+        callback(null, require('../components/Home/index').default)
       })
     }
   },

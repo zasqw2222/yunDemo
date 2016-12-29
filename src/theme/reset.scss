@@ -1,3 +1,6 @@
+/**
+    reset
+*/ 
 html,
 body,
 h1,
@@ -28,8 +31,7 @@ legen d,
 input,
 button,
 textarea,
-menu
-{
+menu {
     margin: 0;
     padding: 0;
 }
@@ -45,22 +47,18 @@ address,
 fig ure,
 figcaption,
 menu,
-details
-{
+details {
     display: block;
 }
 
-table
-{
+table {
     border-spacing: 0;
     border-collapse: collapse;
 }
 
 caption,
-th
-{
+th {
     font-weight: normal;
-
     text-align: left;
 }
 
@@ -69,8 +67,7 @@ body,
 fieldset,
 img,
 iframe,
-abbr
-{
+abbr {
     border: 0;
 }
 
@@ -79,19 +76,16 @@ cite,
 em,
 var,
 address,
-dfn
-{
+dfn {
     font-style: normal;
 }
 
 [hidefocus],
-summary
-{
+summary {
     outline: 0;
 }
 
-li
-{
+li {
     list-style: none;
 }
 
@@ -101,47 +95,39 @@ h3,
 h4,
 h5,
 h6,
-small
-{
+small {
     font-size: 100%;
 }
 
 sup,
-sub
-{
+sub {
     font-size: 83%;
 }
 
 pre,
 code,
 kbd,
-samp
-{
+samp {
     font-family: \5FAE\8F6F\96C5\9ED1;
 }
 
 q:before,
-q:after
-{
+q:after {
     content: none;
 }
 
-textarea
-{
+textarea {
     overflow: auto;
-
     resize: none;
 }
 
 label,
-summary
-{
+summary {
     cursor: default;
 }
 
 a,
-button
-{
+button {
     cursor: pointer;
 }
 
@@ -153,8 +139,7 @@ h5,
 h6,
 em,
 strong,
-b
-{
+b {
     font-weight: bold;
 }
 
@@ -163,8 +148,7 @@ ins,
 u,
 s,
 a,
-a:hover
-{
+a:hover {
     text-decoration: none;
 }
 
@@ -174,17 +158,14 @@ input,
 button,
 select,
 keygen,
-legend
-{
-    /*font-family: 14px/1.5 'Microsoft Yahei', arial, 'Hiragino Sans GB', sans-serif;*/
+legend {
     font: 12px/1.5 'Microsoft YaHei' '\5FAE\8F6F\96C5\9ED1';
-
     color: #333;
     outline: 0;
     background: #fff;
 }
-.clearfix:after
-{
+
+.clearfix:after {
     display: block;
     visibility: hidden;
     clear: both;
@@ -192,7 +173,6 @@ legend
     content: '';
 }
 
-.clearfix
-{
+.clearfix {
     zoom: 1;
 }
