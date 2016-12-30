@@ -1,0 +1,6 @@
+@import '../../theme/index.scss';
+.os{
+    width: 100%;
+    text-align: center;
+    @include fs(36);
+}

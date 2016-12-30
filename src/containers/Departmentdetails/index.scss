@@ -1,0 +1,6 @@
+@import '../../theme/index.scss';
+.departmentdetails{
+    .message{
+        @include height(30);
+    }
+}

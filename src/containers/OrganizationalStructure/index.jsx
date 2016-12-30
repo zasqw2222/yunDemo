@@ -1,11 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './index.scss';
-
 import { setViewCut } from 'lib/utility'
-
-export default class Home extends React.Component {
+export default class OS extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             vHeight: document.documentElement.clientHeight
         };
@@ -18,13 +16,13 @@ export default class Home extends React.Component {
     }
     render() {
         return (
-            <div
-                className="home"
-                style={{
+            <div className="os"
+            style={{
                 height: this.state.vHeight,
                 lineHeight: this.state.vHeight + 'px'
-            }}>
-                HOME
+            }}
+            >
+                组织结构管理
             </div>
         )
     }

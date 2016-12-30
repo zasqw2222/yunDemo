@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router';
 import './index.scss';
-
 import { setViewCut } from 'lib/utility'
-
-export default class Home extends React.Component {
+export default class Departmentdetails extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             vHeight: document.documentElement.clientHeight
         };
@@ -18,13 +17,17 @@ export default class Home extends React.Component {
     }
     render() {
         return (
-            <div
-                className="home"
-                style={{
+            <div className="departmentdetails"
+            style={{
                 height: this.state.vHeight,
                 lineHeight: this.state.vHeight + 'px'
-            }}>
-                HOME
+            }}
+            >
+            <div className="message">
+
+            </div>
+                部门详情
+                <Link to="/departmentdetails/baojie">保洁部</Link>
             </div>
         )
     }

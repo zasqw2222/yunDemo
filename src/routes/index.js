@@ -12,8 +12,8 @@ const rootRouters = [{
     }
   },
   childRoutes: [
-    require('./M1'),
-    require('./M2')
+    require('./OrganizationalStructure'),
+    require('./DepartmentDetail')
   ]
 }];
 

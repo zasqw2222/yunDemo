@@ -3,26 +3,26 @@
  * */
 import React from 'react';
 import {connect} from 'react-redux'
-import { changeTabName } from './actions'
+import {changeTabName,asyncGetData} from './actions'
 
-// console.log(index)
-            console.log(changeTabName)
-import Headers from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
+import Headers from './components/Header';
 
 class App extends React.Component {
+    componentDidMount() {
+        // const {dispatch} = this.props;
+        this.props.dispatch(asyncGetData());
+    }
     render() {
-        const {dispatch, name} = this.props;
-
+        const {dispatch, name, asyncData} = this.props;
         return (
             <div>
-                <Headers name={name} nChangeTabname={name => dispatch(changeTabName(name))}/>
-                <div>
-                    <Sidebar onChangeTabname={name => dispatch(changeTabName(name))}/>
+                <Headers
+                    name={name}
+                    getAsyncData={asyncData}
+                    nChangeTabname={name => dispatch(changeTabName(name))}/>
                     <div className="content">
                         {this.props.children}
                     </div>
-                </div>
             </div>
         )
     }

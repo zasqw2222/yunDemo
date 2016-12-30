@@ -1,3 +1,44 @@
 /**
 包括 var  mixin 公共样式
 */
+
+$fontColor: #222;
+$backgroundColor:#ccc;
+
+
+
+
+
+
+// mixin
+@mixin relative {
+    position: relative;
+    top:0;left:0;
+}
+
+@mixin absolute($top:0,$right:0,$bottom:0,$left:0){
+    position: absolute;
+    top: $top * 1px;
+    right: $right * 1px;
+    bottom: $bottom * 1px;
+    left: $left * 1px;
+}
+
+@mixin width($value){
+    width: $value / 16 * 1rem;
+    width: $value * 1px;
+}
+
+@mixin height($value){
+    height: $value / 16 * 1rem;
+    height: $value * 1px;
+}
+
+
+@mixin fs($fs: 12){
+    font-size: $fs / 16 * 1rem;
+    font-size: $fs * 1px;
+}
+@mixin bc($value){
+    background-color: $value;
+}

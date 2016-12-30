@@ -9,11 +9,11 @@ import thunk from 'redux-thunk';
 // antd
 import '../lib/antd/antd.min.css'
 // reset
+
 import './theme/reset.scss'
 
 import rootRouters from './routes'
 import reducer from './reducers'
-console.log(reducer)
 
 let store = createStore(reducer, applyMiddleware(thunk));
 

@@ -26,7 +26,12 @@ module.exports = {
         chunkFilename: '[name].[chunkhash:5].chunk.js'
     },
     resolve: { 
-        extensions: ['', '.js', '.jsx', 'scss']
+        extensions: ['', '.js', '.jsx', 'scss'],
+        alias: {
+            'components': path.resolve(__dirname, './src/components'), //公共组件路径
+            'lib': path.resolve(__dirname, '../lib'),
+            'theme': path.resolve(__dirname, '../src/theme')
+        }
     },
 
     module: {
