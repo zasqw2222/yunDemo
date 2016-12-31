@@ -5,6 +5,7 @@
     line-height: 60px;
     color: $fontColor;
     background-color: $backgroundColor;
+    display: flex;
     .logo{
         @include relative;
         @include fs(36);

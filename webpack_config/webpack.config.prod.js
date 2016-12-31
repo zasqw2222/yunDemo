@@ -18,8 +18,8 @@ const DIST_PATH = path.resolve(ROOT_PATH, '../dist');
 // 配置信息
 let config = require('../config/config.base');
 
-let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.[contenthash].min.css`);
-// let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}.min.css`);
+let extractCSS = new ExtractTextPlugin(`css/[name].${config.ver}.min.css`);
+let extractSCSS = new ExtractTextPlugin(`css/[name].${config.ver}.min.css`);
 
 module.exports = {
     entry: {
@@ -37,7 +37,9 @@ module.exports = {
             '', '.js', '.jsx'
         ],
         alias: {
-            'publicComponents': path.resolve(__dirname, './src/components') //公共组件路径
+            'components': path.resolve(__dirname, './src/components'), //公共组件路径
+            'lib': path.resolve(__dirname, '../lib'),
+            'theme': path.resolve(__dirname, '../src/theme')
         }
     },
     resolveLoader: {
@@ -50,9 +52,14 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             }, {
-                test: /\.s?css$/,
-                loader: extractCSS.extract('style-loader', 'css-loader?sourceMap&importLoaders=1!postcss-loader?parser=postcss-scss')
-            }, {
+                test: /\.scss$/,
+                loader: extractSCSS.extract('style-loader', 'css-loader?sourceMap&importLoaders=1!postcss-loader?parser=postcss-scss!sass-loader')
+            },
+            {
+                test: /\.css$/,
+                loader: extractCSS.extract("style-loader", "css-loader?sourceMap", "postcss-loader" )
+            }, 
+            {
                 test: /\.json$/,
                 loader: 'json-loader'
             }, {
@@ -71,7 +78,7 @@ module.exports = {
     plugins: [
         new htmlPlugin({title: 'app', inject: 'body', template: './src/tpl.html'}),
         extractCSS,
-        // extractSCSS,
+        extractSCSS,
         new webpack
             .optimize
             .UglifyJsPlugin({
