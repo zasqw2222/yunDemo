@@ -3,6 +3,7 @@ import React from 'react';
 import Logo from '../Logo/';
 import Sidebar from '../Sidebar/';
 import Tabs from '../Tabs/';
+import Usertool from '../Usertool'
 
 import './index.scss'
 
@@ -26,6 +27,7 @@ export default class HeaderCom extends React.Component {
                 <div className="headers clearfix">
                     <Logo />
                     <Tabs />
+                    <Usertool />
                 </div>
             </header>
         )

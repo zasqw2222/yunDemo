@@ -11,6 +11,7 @@ import '../lib/antd/antd.min.css'
 // reset
 
 import './theme/reset.scss'
+import './theme/layout.scss'
 
 import rootRouters from './routes'
 import reducer from './reducers'

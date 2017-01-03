@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 
 import Headers from './components/Header';
 
+
 class App extends React.Component {
     componentDidMount() {
 
