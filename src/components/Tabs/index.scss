@@ -1,0 +1,33 @@
+@import '../../theme/index.scss';
+.tabs {
+    @include height(24);
+    box-sizing: border-box;
+    float: left;
+    li {
+        @include relative();
+        @include width(146);
+        @include height(25);
+        z-index: 0;
+        float: left;
+        margin-top: 7px;
+        background: url('../../static/tab.png') no-repeat;
+        text-indent: 2em;
+        padding-top: 4px;
+        &.current {
+            text-indent: 1.6em;
+            background: url('../../static/currentTabs.png') no-repeat;
+        }
+        img {
+            position: absolute;
+            right: 28px;
+            top: 9px;
+        }
+    }
+    .addTabs{
+        @include width(30);
+        @include height(16);
+        float: left;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+    }
+}
