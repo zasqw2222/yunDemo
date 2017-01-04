@@ -42,7 +42,7 @@ module.exports = {
                 loaders: ["react-hot", "babel-loader"]
             }, {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "postcss", "sass-loader"],
+                loaders: ['style-loader', 'css-loader?sourceMap&importLoaders=1!postcss-loader?parser=postcss-scss!sass-loader'],
             },
             {
                 test: /\.css$/,

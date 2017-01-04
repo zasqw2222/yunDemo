@@ -13,20 +13,30 @@ export default class HeaderCom extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            
         }
+        this.consClick = this.consClick.bind(this);
     }
     componentDidMount() {
     }
     handleClick(e) {
-        // this.setState({current: e.key});
+    }
+    consClick(index,title,to){
+        console.log(arguments)
     }
     render() {
+        let tabs = [{
+            title: '影片管理',
+            to: '/yingpanguanli'
+        },{
+            title: '影院组管理',
+            to: '/yingyuanzuguanli'
+        }];
+        let currentIndex = 2;
         return (
             <header>
                 <div className="headers clearfix">
                     <Logo />
-                    <Tabs />
+                    <Tabs tabs={tabs} currentIndex={currentIndex} tabClick={(index,title,to) => {this.consClick(index,title,to)}} />
                     <Usertool />
                 </div>
             </header>

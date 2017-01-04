@@ -1,7 +1,9 @@
+@import '../../theme/index.scss';
 .home{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 300%;
-    transition: .4s;
+    @include width(1328);
+    margin: 0 auto;
+    position: relative;
+    .TitleContend{
+        @extend %contentBox;
+    }
 }

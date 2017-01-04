@@ -7,25 +7,21 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            vHeight: document.documentElement.clientHeight
+           
         };
     }
     componentDidMount() {
-        setViewCut(this);
+
     }
     componentWillUnmount(){
-        window.onresize = null;
+
     }
     render() {
         return (
-            <div
-                className="home"
-                style={{
-                height: this.state.vHeight,
-                lineHeight: this.state.vHeight + 'px'
-            }}>
-                HOME
-            </div>
+           <div className="home">
+                <div className="TitleContend">1111111</div>
+                <div className="TitleContend">2222222<br />3333333333</div>
+           </div>
         )
     }
 }

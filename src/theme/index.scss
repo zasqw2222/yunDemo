@@ -43,3 +43,13 @@ $backgroundColor:#ccc;
 @mixin bc($value){
     background-color: $value;
 }
+
+
+%contentBox{
+    margin:16px 0;
+    width: 100%;
+    border-radius: 2px;
+    border:16px solid #fff;
+    box-shadow: 0 1px 1px #080103;
+    background-color: #7f7f7f;
+}
